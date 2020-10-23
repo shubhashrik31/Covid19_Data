@@ -1,0 +1,21 @@
+submitPost(){
+
+  this.http.post("https://jsonplaceholder.typicode.com/posts",
+  "this.postData").subscribe((value:any) => {
+    this.showSubmittedPost = value;
+  });
+}
+
+
+<div *ngIf="showSubmittedPost">
+{{showSubmittedPost.title}}
+</div>
+
+<div>
+    <input type="text" [(ngModel)]="postData.title" />
+    <input type="text" [(ngModel)]="postData.body" />
+  <button (click)="submitPost()">Submit Post</button>
+</div>
+<div *ngFor="let post of posts">
+  {{post | json}}
+</div>
